@@ -1,0 +1,4 @@
+#!/bin/bash
+# not going to put electron in the git repository
+npm install electron --save
+node start
