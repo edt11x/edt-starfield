@@ -9,20 +9,12 @@ function createWindow() {
     frame: false,     // No window frame
     webPreferences: {
       preload: path.join(__dirname, 'renderer.js'),
-      nodeIntegration: true,
-      contextIsolation: false
+      nodeIntegration: false,
+      contextIsolation: true
     }
   });
 
   win.loadFile('index.html');
-
-  // Exit fullscreen and quit with ESC key
-  win.on('keydown', (event) => {
-    if (event.key === 'Escape') {
-      win.setFullScreen(false);
-      app.quit();
-    }
-  });
 }
 
 app.whenReady().then(() => {

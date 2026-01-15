@@ -29,7 +29,7 @@ class Star {
     }
 
     draw() {
-        const perspective = canvas.width / this.z;
+        const perspective = canvas.width / Math.max(0.1, this.z);
         const x = (this.x - canvas.width / 2) * perspective + canvas.width / 2;
         const y = (this.y - canvas.height / 2) * perspective + canvas.height / 2;
         
@@ -39,15 +39,6 @@ class Star {
             ctx.arc(x, y, size, 0, Math.PI * 2);
             ctx.fillStyle = 'white';
             ctx.fill();
-            
-            // Draw trail
-            const prevX = (this.x - canvas.width / 2) * (canvas.width / (this.z + this.speed)) + canvas.width / 2;
-            const prevY = (this.y - canvas.height / 2) * (canvas.width / (this.z + this.speed)) + canvas.height / 2;
-            ctx.beginPath();
-            ctx.moveTo(prevX, prevY);
-            ctx.lineTo(x, y);
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.stroke();
         }
     }
 }
